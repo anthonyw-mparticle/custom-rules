@@ -1,0 +1,96 @@
+{
+ "events": [
+   {
+     "data": {
+       "product_action": {
+         "action": "checkout",
+         "transaction_id": "CS App",
+         "total_amount": 6685.0,
+         "products": [
+           {
+             "id": "DR1025",
+             "name": "Deluxe Room",
+             "price": 1337.0,
+             "quantity": 5.0,
+             "added_to_cart_time_ms": 1494957640409,
+             "total_product_amount": 6685.0,
+             "custom_attributes": {}
+           }
+         ]
+       },
+       "timestamp_unixtime_ms": 1494957640411,
+       "event_id": 994335493735902058,
+       "source_message_id": "c6abb6ca-9249-47ea-8629-c15b79db9535",
+       "session_id": -3709081240263091421,
+       "custom_attributes": {},
+       "device_current_state": {
+         "time_since_start_ms": 153766,
+         "battery_level": 1.0,
+         "data_connection_type": "mobile",
+         "data_connection_type_detail": "lte",
+         "total_system_memory_usage_bytes": 1570713600,
+         "disk_space_free_bytes": 423014400,
+         "external_disk_space_free_bytes": 423014400,
+         "cpu": "unknown",
+         "system_memory_available_bytes": 1076989952.0,
+         "system_memory_low": false,
+         "system_memory_threshold_bytes": 226492416.0,
+         "application_memory_available_bytes": 1172488.0,
+         "application_memory_max_bytes": 402653184.0,
+         "application_memory_total_bytes": 13039912.0,
+         "device_orientation": "portrait"
+       }
+     },
+     "event_type": "commerce_event"
+   }
+ ],
+ "timestamp_unixtime_ms": 1494957645595,
+ "batch_id": -669400600241818775,
+ "message_id": "7be8c368-5198-4d74-86e7-45be223fcb1b",
+ "source_request_id": "94c1a067-bd0c-4c87-85e2-808617346611",
+ "message_type": "events",
+ "schema_version": 1,
+ "device_info": {
+   "brand": "Android",
+   "product": "sdk_google_phone_x86_64",
+   "device": "generic_x86_64",
+   "android_uuid": "d847067242d318ae",
+   "device_manufacturer": "unknown",
+   "platform": "Android",
+   "os_version": "24",
+   "device_model": "Android SDK built for x86_64",
+   "screen_height": 2392,
+   "screen_width": 1440,
+   "screen_dpi": 560,
+   "device_country": "United States",
+   "locale_language": "en",
+   "locale_country": "US",
+   "network_country": "us",
+   "network_carrier": "Android",
+   "network_code": "260",
+   "network_mobile_country_code": "310",
+   "timezone_offset": -5,
+   "build_identifier": "NYC",
+   "http_header_user_agent": "mParticle Android SDK/4.10.5",
+   "is_tablet": false,
+   "push_notification_sound_enabled": false,
+   "push_notification_vibrate_enabled": false,
+   "supports_telephony": false,
+   "has_nfc": false,
+   "bluetooth_enabled": false,
+   "bluetooth_version": "none",
+   "is_dst": true
+ },
+ "application_info": {
+   "application_name": "CS App",
+   "application_version": "1.0",
+   "package": "com.mparticle.shwang.csapp"
+ },
+ "user_attributes": {
+   "key": "this is the key"
+ },
+ "source_info": {
+   "channel": "native"
+ },
+ "ip": "100.12.160.114"
+}

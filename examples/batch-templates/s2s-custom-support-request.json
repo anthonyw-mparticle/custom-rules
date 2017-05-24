@@ -1,0 +1,27 @@
+{
+ "events": [
+  {
+   "data": {
+    "custom_event_type": "other",
+    "event_name": "Ticket Updated",
+    "custom_attributes": {
+     "Ticket subject": "Can you fix my laptop?",
+     "Unique ticket ID": "7",
+     "External ticket ID": "",
+     "The source channel of the ticket": "Web Form",
+     "Ticket status": "Open",
+     "Ticket priority": "Normal",
+     "Ticket type": "Question",
+     "Score": "6",
+     "Ticket group": "Support",
+     "Ticket due date": "",
+     "event.Ticket requester language": "English"
+    }
+   },
+   "event_type": "custom_event"
+  }
+ ],
+ "user_identities": {
+  "email": "helpers@mparticle.com"
+ }
+}
