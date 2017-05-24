@@ -1,0 +1,76 @@
+{
+ "events": [
+   {
+     "data": {
+       "custom_event_type": "other",
+       "event_name": "Test Event",
+       "timestamp_unixtime_ms": 1494947404727,
+       "event_id": -4471841645889434713,
+       "source_message_id": "B69049CD-B552-4AC9-9F8A-BA63740179D1",
+       "session_id": -1975737394458613431,
+       "custom_attributes": {},
+       "device_current_state": {
+         "time_since_start_ms": 175454,
+         "battery_level": 0.72,
+         "data_connection_type": "wifi",
+         "gps_state": false,
+         "total_system_memory_usage_bytes": 2884747264,
+         "disk_space_free_bytes": 157130018816,
+         "cpu": "0",
+         "system_memory_available_bytes": 344752128.0,
+         "application_memory_total_bytes": 51724288.0,
+         "device_orientation": "FaceUp",
+         "status_bar_orientation": "portrait"
+       }
+     },
+     "event_type": "custom_event"
+   }
+ ],
+ "timestamp_unixtime_ms": 1494947410813,
+ "batch_id": 8163059065899481120,
+ "message_id": "55999360-bd90-4b3c-bc02-4ff13d7828ea",
+ "source_request_id": "C805FC65-844A-4532-B028-6079FB5FEA0D",
+ "message_type": "events",
+ "schema_version": 1,
+ "device_info": {
+   "brand": "iPhone9,2",
+   "product": "iPhone9,2",
+   "device": "iPhone",
+   "device_manufacturer": "Apple",
+   "platform": "iOS",
+   "os_version": "10.2.1",
+   "device_model": "iPhone9,2",
+   "screen_height": 2208,
+   "screen_width": 1242,
+   "locale_language": "en",
+   "locale_country": "US",
+   "network_country": "us",
+   "network_carrier": "Verizon",
+   "network_code": "480",
+   "network_mobile_country_code": "311",
+   "timezone_offset": -4,
+   "http_header_user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Mobile/14D27 mParticle/6.12.2",
+   "cpu_architecture": "arm64",
+   "is_tablet": false,
+   "radio_access_technology": "LTE",
+   "ios_idfv": "a5b904a0-237f-4afc-8e9a-3830d95dc792",
+   "limit_ad_tracking": true,
+   "is_dst": true
+ },
+ "application_info": {
+   "application_name": "Kale's App",
+   "application_version": "1.0",
+   "package": "com.mparticle.sh.MParticleExampleApp"
+ },
+ "user_attributes": {
+   "mood": "happy",
+   "color": "blue"
+ },
+ "user_identities": {
+   "customerid": "johnsmith66",
+ },
+ "source_info": {
+   "channel": "native"
+ },
+ "ip": "100.12.160.114"
+}

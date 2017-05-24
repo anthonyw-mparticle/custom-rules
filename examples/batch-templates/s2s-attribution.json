@@ -1,0 +1,24 @@
+{
+ "events": [
+  {
+   "data": {
+    "custom_event_type": "attribution",
+    "event_name": "attribution",
+    "timestamp_unixtime_ms": 1485447290017,
+    "event_id": -4997716032753140000,
+    "custom_attributes": {
+     "campaign": "My Campaign",
+     "publisher": "My Publisher"
+    }
+   },
+   "event_type": "custom_event"
+  }
+ ],
+ "device_info": {
+  "platform": "iOS",
+  "ios_advertising_id": "613ff528-afd1-4c1b-9628-e6ed25ece9c0"
+ },
+ "user_identities": {
+  "customerid": "1234"
+ }
+}

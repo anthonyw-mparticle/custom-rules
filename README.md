@@ -1,137 +1,49 @@
-<!-- toc -->
-* [General Lambda function format](#general-lambda-function-format)
-* [Non-events Rules](#non-events-rules)
-* [Event-focused rules](#event-focused-rules)
-* [Batch format](#batch-format)
+# Connections
 
-<!-- toc stop -->
+The Connections screen is the core of mParticle's functionality. It controls how event data from your inputs (iOS, Android, Web, Feeds, etc) is forwarded to your Output services. You must set up a separate connection for each input/output. For each connection, you have a number of opportunities to cleanse and filter your data, to ensure that each output receives the data you want it to receive, in the correct format.
 
-mParticle's Rules are JavaScript functions that manipulate an incoming batch object. Currently, rules can only be applied to Feeds, but support for other input types will be added over time. See mParticle's [documentation](https://docs.mparticle.com#rules) for help setting up rules in the mParticle dashboard.
+## Connections flow
 
-## General Lambda function format
+![Connections Overview](/img/connections-overview.png)
 
-Rules take the form of an AWS Lambda function, running in Node 4.3. The Lambda function takes an incoming `batch` argument to be manipulated and a `context` argument containing immutable metadata. The `context` argument is required for AWS Lambda functions but for an mParticle rule is effectively `null`.
+Each of mParticle's Output services has it's own requirements, so the process for setting up each connection will be a little different, but all connections require these basic steps:
 
-The standard Lambda `callback` function takes a message and a data output. For mParticle Rules, the message will always be `null`. The output should either be an object in the same format as the original `batch` argument, or `null`.
+### 1. Select an input
 
-```javascript
-exports.handler=(batch,context,callback)=>{
-    //Do something with batch
-    callback(null, batch); // or callback(null, null); to drop the batch completely
-}
-```
-> Note that standard AWS Lambda naming calls for `(event,context,callback)`; here we have used `(batch,context,callback)` to avoid confusion with mParticle's `event` object.
+Select the input you want to configure. When you first load the connections screen, you will see a list of available inputs. If the list is empty, go to **Setup > Inputs** to create inputs.
 
-While all rules have the same basic syntax, there are two main use cases for rules: working with the events array of a batch, and working with anything else.
 
-## Non-events Rules
+### 2. Apply 'All Outputs' transformations
 
-If you aren't dealing with the events array, there are two basic kinds of rules:
+Once you have an input selected, you can setup transformations that will be applied to all Output services connected to that Input. Click **All Outputs** to see options. There are two transformations that can be applied here:
 
-The first is a simple 'filter'. Based on some attribute/s of the batch, the callback either contains the original batch object, unaltered, or `null`, effectively dropping the batch from feed altogether:
+   * [All Outputs Rules](/rules-user-guide.md)
+   * User Splits
 
-```javascript
-exports.handler=(batch,context,callback)=>{
-/* 
-A support feed contains batches from internal and external users. 
-We can create a rule to drop batches from internal users.
-*/    
-    if(batch.user_attributes.internal) {
-        callback(null, null);
-    }
-    else{
-        callback(null, batch);
-    }
-};
-```
+### 3. Select an Output
 
-Alternatively, the callback can contain a modified version of the original batch, with some attributes added, changed or dropped.
+Once you have selected an Input, you will see a list of available Output services that can receive data from your selected Input. If this list is empty, go to **Setup > Outputs** to create outputs.
 
-```javascript
-exports.handler=(batch,context,callback)=>{
-/* 
-A feed has firstname and lastname attributes for a user.
-Our output platform expects a full name, so we can use a rule to create one.
-*/    
-    if(batch.user_attributes.$firstname && batch.user_attributes.$lastname) {
-        var firstname = batch.user_attributes.$firstname;
-        var lastname = batch.user_attributes.$lastname;
-        batch.user_attributes.name = `${firstname} ${lastname}`;
-    }
-    callback(null, batch);
+Once you have selected both an input and output, click **Settings** in the right sidebar to provide information specific to this connection. If you want to apply further transformations, you should make sure that the **Status** slider is off, so that you are not sending data to the Output service before you're ready.
 
-};
-```
 
-## Event-focused rules
+### 4. Apply 'Specific Output' transformations
 
-The batch object contains an `events` array, which can have any number of events. If you want to handle each event individually, you will need to define a handler function and use it to iterate over the `events` array and, for each event, return either the original event, a modified copy, or `null` to drop the event.
+The second set of transformations apply only to your selected Output. Click **Specific Output** to see options. Transformations that can be applied at this step include:
+   * Event Filter (Not part of Connections Screen)
+   * [Specific Outputs Rules](/rules-user-guide.md)
+   * Forwarding Rules
+   * Custom Mappings (if supported)
+   * User Sampling
 
-Remember that if your Lambda function throws an error, the entire batch will be dropped so consider including at least basic error handling into your `event_handler` function, so that problems processing a single event won't cause you to lose a whole batch.
+### 5. Complete Connection Settings and set Status to 'Sending'
 
-```javascript
-exports.handler=(batch,context,callback)=>{
-/* 
-An attribution feed sends events with the event name 'Email UnSubscribe'. 
-We can create a feed to change it to 'unsubscribe' to match data from other sources.
-*/
-    function event_handler(event) {
-    	try {
-            if (event.data.event_name === 'Email UnSubscribe') {
-                event.data.event_name = 'unsubscribe';
-            }
-     	    return event;   	    
-    	}
-    	catch(err) {
-    	    return null;
-    	}
-    }
-    
-    var events = batch.events;
-    var newEvents = [];
-    
-    events.forEach(function(currentEvent){
-    	newEvents.push(event_handler(currentEvent));
-    });
-    
-    batch.events = newEvents;
-    
-    callback(null, batch);
-};
-```
+Finally, click **Settings** in the right sidebar to edit any settings that apply to the connection. These will be different for every Output but can include:
 
-## Batch format
+  * Credentials
+  * What user identifiers and attributes should be sent
+  * Encoding to be used for identifying data
+  * How custom attributes should be mapped
+  * How to handle attributes specific to the Output
 
-See the main mParticle docs for [full JSON batch examples](http://docs.mparticle.com/#json-reference). Here's a stripped down example:
-
-```json
-{
-	"events": [{
-		"data": {
-			"event_name": "my event",
-			"custom_event_type": "navigation",
-			"device_current_state": {
-				"application_memory_available_bytes": 5
-			}
-		},
-		"event_type": "custom_event"
-	}],
-	"device_info": {
-		"platform": "iOS",
-		"ios_advertising_id": "b86e0741-4c62-496c-b936-6f9e2c41eea8",
-		"is_dst": false
-	},
-	"user_attributes": {
-
-	},
-	"deleted_user_attributes": [
-
-	],
-	"user_identities": {
-		"CustomerId": "Peter.Venkman@Ghostbusters.com"
-	},
-	"environment": "Development",
-	"api_key": "XXXXXXXXXXXXXXXXXXXXXXXX",
-	"ip": "127.0.0.1"
-}
-```
+When you have completed the required settings, check that the **Status** slider is set to **Sending** and click **Save**.

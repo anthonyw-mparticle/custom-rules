@@ -1,0 +1,120 @@
+{
+  "events": [{
+      "data": {
+        "product_action": {
+          "action": "purchase",
+          "total_amount": 100.0,
+          "products": [{
+            "id": "h1234",
+            "name": "Hat",
+            "price": 20.0,
+            "quantity": 5.0,
+            "total_product_amount": 100.0,
+            "custom_attributes": {}
+          }]
+        },
+        "timestamp_unixtime_ms": 1494947961106,
+        "event_id": 6388709626641721553,
+        "source_message_id": "1303ADA2-5830-4D17-B8F1-4650C219F8E2",
+        "session_id": -6562925952550583745,
+        "custom_attributes": {},
+        "device_current_state": {
+          "time_since_start_ms": 731848,
+          "battery_level": 0.72,
+          "data_connection_type": "wifi",
+          "gps_state": false,
+          "total_system_memory_usage_bytes": 2921349120,
+          "disk_space_free_bytes": 157105139712,
+          "cpu": "1",
+          "system_memory_available_bytes": 230162432.0,
+          "application_memory_total_bytes": 52903936.0,
+          "device_orientation": "FaceUp",
+          "status_bar_orientation": "portrait"
+        }
+      },
+      "event_type": "commerce_event"
+    },
+    {
+      "data": {
+        "product_action": {
+          "action": "purchase",
+          "total_amount": 50.0,
+          "products": [{
+            "id": "s1234",
+            "name": "Shirt",
+            "price": 25.0,
+            "quantity": 2.0,
+            "total_product_amount": 50.0,
+            "custom_attributes": {}
+          }]
+        },
+        "timestamp_unixtime_ms": 149494797823,
+        "event_id": 6388709626641721553,
+        "source_message_id": "1303ADA2-5830-4D17-B8F1-4650C219F8E2",
+        "session_id": -6562925952550583745,
+        "custom_attributes": {},
+        "device_current_state": {
+          "time_since_start_ms": 731848,
+          "battery_level": 0.72,
+          "data_connection_type": "wifi",
+          "gps_state": false,
+          "total_system_memory_usage_bytes": 2921349120,
+          "disk_space_free_bytes": 157105139712,
+          "cpu": "1",
+          "system_memory_available_bytes": 230162432.0,
+          "application_memory_total_bytes": 52903936.0,
+          "device_orientation": "FaceUp",
+          "status_bar_orientation": "portrait"
+        }
+      },
+      "event_type": "commerce_event"
+    }
+  ],
+  "timestamp_unixtime_ms": 149494797936,
+  "batch_id": -5858825948923389480,
+  "message_id": "3afd2169-4c28-47d3-a7a2-26409836cb5d",
+  "source_request_id": "B57AEAD0-9272-4C51-8315-7313F53140C4",
+  "message_type": "events",
+  "schema_version": 1,
+  "device_info": {
+    "brand": "iPhone9,2",
+    "product": "iPhone9,2",
+    "device": "iPhone",
+    "device_manufacturer": "Apple",
+    "platform": "iOS",
+    "os_version": "10.2.1",
+    "device_model": "iPhone9,2",
+    "screen_height": 2208,
+    "screen_width": 1242,
+    "locale_language": "en",
+    "locale_country": "US",
+    "network_country": "us",
+    "network_carrier": "Verizon",
+    "network_code": "480",
+    "network_mobile_country_code": "311",
+    "timezone_offset": -4,
+    "http_header_user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Mobile/14D27 mParticle/6.12.2",
+    "cpu_architecture": "arm64",
+    "is_tablet": false,
+    "radio_access_technology": "LTE",
+    "ios_idfv": "a5b904a0-237f-4afc-8e9a-3830d95dc792",
+    "limit_ad_tracking": true,
+    "is_dst": true
+  },
+  "application_info": {
+    "application_name": "Kale's App",
+    "application_version": "1.0",
+    "package": "com.mparticle.sh.MParticleExampleApp"
+  },
+  "user_attributes": {
+    "mood": "happy",
+    "name": "Kale"
+  },
+  "user_identities": {
+    "customerid": "johnsmith66"
+  },
+  "source_info": {
+    "channel": "native"
+  },
+  "ip": "100.12.160.114"
+}
