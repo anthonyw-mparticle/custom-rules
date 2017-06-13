@@ -104,20 +104,20 @@ We can create a rule to change it to 'subscribe', to tailor it to a specific Out
 
 Rules can be applied in two places. 'All Output' rules are applied first, and their output is passed along to all Output services connected to that input. 'Specific Output' Rules are applied as part of a particular Input/Output connection and affect only that Output service.
 
-In most ways the two types of rules operate in the same way. Both take the same arguments and return a `batch` object in the same format. However, there are two differences to be aware of:
+In most ways the two types of rules operate in the same way. Both take the same arguments and return a `batch` object in the same format. However, slightly different fields can be accessed/altered in 'All Outputs' and 'Specific Outputs' rules. See [Batch format](#batch-format) for details.
 
-### Errors
+## Error Handling
 
-In the event of an unhandled exception:
+When creating a rule in the mParticle dashboard, you must select a **Failure Action**. This determines what will happen if your rule throws an unhandled exception.
 
-* An 'All Output' rule will return `null`, effectively dropping the batch.
-* A 'Specific Output' rule will return the unaltered batch object, discarding any changes.
+* If you choose `Discard`, an unhandled exception will cause your rule return `null`, effectively dropping the batch.
+* If you choose `Proceed`, an unhandled exception will cause your rule to return the unaltered batch object, proceeding as if the rule had not been applied.
 
-Regardless of where you are applying a rule, it's best practice to handle all exceptions in your code, rather than falling back on the above defaults. This is especially true if your rule deals with events, where an unhandled exception from just one event could lead to all events in the batch being dropped.
+Regardless of which option you choose, it's best practice to handle all exceptions in your code, rather than falling back on the above defaults. This is especially true if your rule deals with events, where an unhandled exception from just one event could lead to all events in the batch being dropped.
 
-### Available fields
 
-Slightly different fields can be accessed/altered in 'All Outputs' and 'Specific Outputs' rules. See [Batch format](#batch-format) for details.
+
+
 
 ## Batch format
 
