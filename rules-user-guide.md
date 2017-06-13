@@ -28,6 +28,15 @@ There are two ways you can write a rule: create it directly in mParticle, using 
 
 If you use an ARN to link to an AWS Lambda Function, you can use external resources, such as your own database or libraries, but you need to have an AWS account set up and grant permission to mParticle to invoke your function.
 
+## Error Handling
+
+When you create a rule, you must select a **Failure Action**. This determines what will happen if your rule throws an unhandled exception. There is no default action, you must select one of the following:
+
+* If you choose `Discard`, an unhandled exception will cause your rule return `null`, effectively dropping the batch.
+* If you choose `Proceed`, an unhandled exception will cause your rule to return the unaltered batch object, proceeding as if the rule had not been applied.
+
+Regardless of which option you choose, it's best practice to handle all exceptions in your code, rather than falling back on the above defaults. This is especially true if your rule deals with events, where an unhandled exception from just one event could lead to all events in the batch being dropped.
+
 ### Syntax
 
 ~~~
