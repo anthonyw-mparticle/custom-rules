@@ -1,5 +1,9 @@
 # Rules - User Guide
 
+The Rules feature is currently in beta testing. Testers, please refer to our [beta documentation](https://github.com/mParticle/custom-rules/blob/master/rules-user-guide.md).
+
+<!--
+
 The powerful Rules feature allows you to cleanse, enrich and transform your incoming data before it is forwarded to downstream services. A Rule is a JavaScript function which takes an incoming batch object and modifies it according to user-defined criteria. Any rule will cover one or more of five basic use cases:
 
 * Modify a batch's data
@@ -134,3 +138,5 @@ To help you with troubleshooting rules, mParticle maintains logs for each rule w
 ## Deleting Rules
 
 From the Rules listing, select the **Delete** action to delete the Rule. If the rule is applied to any connections, it will be removed.
+
+-->
